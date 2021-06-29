@@ -13,9 +13,11 @@ create unique index if not exists projects_name_uindex
 
 create table if not exists tags
 (
-    id serial not null
+    id      serial                  not null
         constraint tags_pk
-            primary key
+            primary key,
+    updated timestamp default now() not null,
+    "desc"  varchar(512)            not null
 );
 
 create table if not exists media_tag_votes

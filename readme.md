@@ -2,6 +2,18 @@
 
 The vault API contains all relational data about the media. It does not store the media itself
 
+## Running locally
+
+### Install:
+- Hasura CLI
+- docker & docker-compose
+- postgresql-client:13
+
+### Prepare
+- copy docker-compose.override.template.yml to docker-compose.override.yml
+- copy .env.template to .env
+
+
 ## Models:
 - User
 - Media
@@ -33,3 +45,10 @@ Every time a user tags a resource, it adds some weight to the tag. When sufficie
 ### Comment
 Comments happen on media, they optionally reference a timestamp/timespan
 
+## Managing migrations:
+
+https://hasura.io/docs/latest/graphql/core/migrations/migrations-setup.html
+
+- Create a migration:
+  `hasura migrate create "init" --from-server`
+- Apply the migration

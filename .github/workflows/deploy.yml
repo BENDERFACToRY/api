@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Copy environment
-        run: cp ~/config/app.env .env
+        run: cp ~/config/api.env .env
       - name: Pull containers
         run: docker-compose pull -q
       - name: Deploy services

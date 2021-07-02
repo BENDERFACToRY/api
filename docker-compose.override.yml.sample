@@ -2,9 +2,12 @@ networks:
   default:
     external:
       name: benders
+  proxy: {}
 
 services:
   graphql:
     image: hasura/graphql-engine:v2.0.1
     environment:
       HASURA_GRAPHQL_CORS_DOMAIN: http://localhost:3000,http://localhost:9695/
+    networks:
+      - default

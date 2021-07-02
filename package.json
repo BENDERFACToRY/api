@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "export": "hasura metadata export"
+  },
   "devDependencies": {
     "hasura-cli": "^2.0.1"
   }

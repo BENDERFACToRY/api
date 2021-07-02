@@ -19,8 +19,7 @@ services:
       - db-data:/var/lib/postgresql/data
 
   graphql:
-    # image: hasura/graphql-engine:v2.0.1.cli-migrations-v3
-    image: hasura/graphql-engine:v2.0.1
+    image: hasura/graphql-engine:v2.0.1.cli-migrations-v3
     restart: unless-stopped
     depends_on:
       - db

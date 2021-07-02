@@ -6,18 +6,23 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE TABLE "user" (
     id uuid DEFAULT uuid_generate_v4 (),
     name VARCHAR NOT NULL,
+
     PRIMARY KEY (id)
 );
 
 CREATE TABLE media (
     id      UUID NOT NULL default uuid_generate_v4(),
-    ipfs    VARCHAR NOT NULL
+    ipfs    VARCHAR NOT NULL,
+
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE "like" (
     user_id UUID NOT NULL REFERENCES public.user(id),
     media_id UUID NOT NULL REFERENCES public.media(id),
-    created  TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    created  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+
+    PRIMARY KEY (user_id, media_id)
 );
 
 CREATE TABLE "tag" (

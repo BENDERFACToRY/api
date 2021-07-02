@@ -27,14 +27,13 @@ services:
       - 80
     command: >
       /bin/sh -c "
-      graphql-engine \
-        serve \
+      graphql-engine serve \
         --server-port 80 \
         --access-key $HASURA_GRAPHQL_ADMIN_SECRET;
       "
     volumes:
-      - ./migrations:/hasura-migrations
-      - ./metadata:/hasura-metadata
+      - ./migrations:/hasura-migrations:ro
+      - ./metadata:/hasura-metadata:ro
     networks:
       - proxy
       - default

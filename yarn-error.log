@@ -1,0 +1,38 @@
+Arguments: 
+  /home/dexter/.nvm/versions/node/v16.2.0/bin/node /home/dexter/.nvm/versions/node/v16.2.0/bin/yarn run dev
+
+PATH: 
+  /home/dexter/.local/bin:/home/dexter/.nvm/versions/node/v16.2.0/bin:/home/dexter/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  16.2.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  SyntaxError: /home/dexter/Projects/ModularMayham/api/package.json: Unexpected token } in JSON at position 59
+      at JSON.parse (<anonymous>)
+      at /home/dexter/.nvm/versions/node/v16.2.0/lib/node_modules/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/home/dexter/.nvm/versions/node/v16.2.0/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /home/dexter/.nvm/versions/node/v16.2.0/lib/node_modules/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "scripts": {
+      "export": "hasura metadata export",
+    },
+    "devDependencies": {
+      "hasura-cli": "^2.0.1"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

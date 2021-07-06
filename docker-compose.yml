@@ -45,3 +45,4 @@ services:
       HASURA_GRAPHQL_JWT_SECRET: $HASURA_JWT_SECRET
       HASURA_GRAPHQL_CORS_DOMAIN: https://vault.benderfactory.com
       HASURA_GRAPHQL_ENABLE_CONSOLE: 'false'
+      HASURA_GRAPHQL_UNAUTHORIZED_ROLE: anonymous

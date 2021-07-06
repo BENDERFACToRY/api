@@ -85,6 +85,12 @@
       - media_id
       - created
       filter: {}
+  delete_permissions:
+  - role: user
+    permission:
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
 - table:
     schema: public
     name: media
@@ -110,13 +116,81 @@
         table:
           schema: public
           name: tag
+  insert_permissions:
+  - role: server
+    permission:
+      check: {}
+      columns:
+      - bpm
+      - data_folder
+      - season
+      - title
+      - torrent
+      - youtube_url
+      - recorded_date
+      - stereo_mix
+      - tracks
+      - id
+      backend_only: false
   select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - bpm
+      - data_folder
+      - season
+      - title
+      - torrent
+      - youtube_url
+      - recorded_date
+      - stereo_mix
+      - tracks
+      - id
+      filter: {}
+  - role: server
+    permission:
+      columns:
+      - id
+      - title
+      - data_folder
+      - stereo_mix
+      - recorded_date
+      - torrent
+      - tracks
+      - bpm
+      - youtube_url
+      - season
+      filter: {}
   - role: user
     permission:
       columns:
       - id
-      - ipfs_uri
+      - title
+      - data_folder
+      - stereo_mix
+      - recorded_date
+      - torrent
+      - tracks
+      - bpm
+      - youtube_url
+      - season
       filter: {}
+  update_permissions:
+  - role: server
+    permission:
+      columns:
+      - id
+      - title
+      - data_folder
+      - stereo_mix
+      - recorded_date
+      - torrent
+      - tracks
+      - bpm
+      - youtube_url
+      - season
+      filter: {}
+      check: {}
 - table:
     schema: public
     name: tag

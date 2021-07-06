@@ -43,6 +43,5 @@ services:
       LETSENCRYPT_HOST: api.benderfactory.com
       HASURA_GRAPHQL_DATABASE_URL: postgres://$POSTGRES_USER:$POSTGRES_PASSWORD@db:5432/$POSTGRES_DB
       HASURA_GRAPHQL_JWT_SECRET: $HASURA_JWT_SECRET
-      HASURA_GRAPHQL_CORS_DOMAIN: https://vault.benderfactory.com
+      HASURA_GRAPHQL_CORS_DOMAIN: https://vault.benderfactory.com,http://localhost:9695/
       HASURA_GRAPHQL_UNAUTHORIZED_ROLE: anonymous
-      HASURA_GRAPHQL_CORS_DOMAIN: http://localhost:9695/

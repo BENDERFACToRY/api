@@ -1,7 +1,10 @@
 {
   "scripts": {
     "console": "hasura console",
-    "export": "hasura metadata export"
+    "export": "hasura metadata export",
+    "prod": "hasura --envfile .env.production",
+    "console:prod": "npm run prod console",
+    "apply:prod": "npm run prod migrate apply && npm run prod metadata apply"
   },
   "devDependencies": {
     "hasura-cli": "^2.0.1"

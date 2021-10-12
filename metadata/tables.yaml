@@ -212,6 +212,21 @@
         table:
           schema: public
           name: tag
+  computed_fields:
+  - name: liked
+    definition:
+      function:
+        schema: public
+        name: media_liked_by_user
+      session_argument: hasura_session
+      table_argument: media_row
+    comment: ""
+  - name: likes_count
+    definition:
+      function:
+        schema: public
+        name: media_likes_count
+      table_argument: media_row
   insert_permissions:
   - role: server
     permission:
@@ -272,6 +287,9 @@
       - bpm
       - youtube_url
       - season
+      computed_fields:
+      - liked
+      - likes_count
       filter: {}
   update_permissions:
   - role: server

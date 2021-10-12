@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "console": "hasura console",
     "export": "hasura metadata export"
   },
   "devDependencies": {

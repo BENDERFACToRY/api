@@ -22,6 +22,17 @@
       - scope
       - user_id
       filter: {}
+  - role: user
+    permission:
+      columns:
+      - expires
+      - access_token
+      - refresh_token
+      - user_id
+      - scope
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
   delete_permissions:
   - role: server
     permission:
@@ -60,6 +71,85 @@
       filter: {}
 - table:
     schema: public
+    name: discord
+  object_relationships:
+  - name: user
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: user
+        insertion_order: null
+        column_mapping:
+          id: discord_id
+  insert_permissions:
+  - role: server
+    permission:
+      check: {}
+      columns:
+      - id
+      - username
+      - discriminator
+      - avatar
+      - bot
+      - system
+      - email
+      backend_only: false
+  select_permissions:
+  - role: gatekeeper
+    permission:
+      columns:
+      - id
+      - roles
+      filter: {}
+  - role: server
+    permission:
+      columns:
+      - id
+      - username
+      - discriminator
+      - avatar
+      - bot
+      - system
+      - email
+      filter: {}
+  - role: user
+    permission:
+      columns:
+      - avatar
+      - bot
+      - discriminator
+      - email
+      - id
+      - roles
+      - system
+      - username
+      filter:
+        user:
+          id:
+            _eq: X-Hasura-User-Id
+  update_permissions:
+  - role: gatekeeper
+    permission:
+      columns:
+      - roles
+      filter: {}
+      check: null
+  - role: server
+    permission:
+      columns:
+      - id
+      - username
+      - discriminator
+      - avatar
+      - bot
+      - system
+      - email
+      - roles
+      filter: {}
+      check: null
+- table:
+    schema: public
     name: like
   object_relationships:
   - name: media
@@ -78,13 +168,19 @@
       - media_id
       backend_only: false
   select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - media_id
+      filter: {}
+      allow_aggregations: true
   - role: user
     permission:
       columns:
-      - user_id
       - media_id
-      - created
+      - user_id
       filter: {}
+      allow_aggregations: true
   delete_permissions:
   - role: user
     permission:
@@ -138,15 +234,17 @@
       columns:
       - bpm
       - data_folder
-      - season
-      - title
-      - torrent
-      - youtube_url
-      - recorded_date
-      - stereo_mix
-      - tracks
       - id
-      filter: {}
+      - recorded_date
+      - season
+      - stereo_mix
+      - title
+      - tracks
+      - youtube_url
+      filter:
+        tags:
+          name:
+            _eq: public
   - role: server
     permission:
       columns:
@@ -217,6 +315,25 @@
 - table:
     schema: public
     name: user
+  object_relationships:
+  - name: discord
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: discord
+        insertion_order: null
+        column_mapping:
+          discord_id: id
+  - name: token
+    using:
+      manual_configuration:
+        remote_table:
+          schema: oauth
+          name: token
+        insertion_order: null
+        column_mapping:
+          id: user_id
   array_relationships:
   - name: comments
     using:

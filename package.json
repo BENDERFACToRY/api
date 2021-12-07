@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "setup": "hasura migrate apply && hasura metadata apply",
     "console": "hasura console",
     "export": "hasura metadata export",
     "prod": "hasura --envfile .env.production",
